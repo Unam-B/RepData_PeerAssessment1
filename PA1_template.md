@@ -164,7 +164,7 @@ The next code chunk identifies weekends and weekdays.
 
 ```r
 activity2 <- mutate(activity2, day = weekdays(date))
-activity2 <- mutate(activity2, weekday = ifelse(day == "Saturday" | day == "Saturday", "Weekend", "Weekday"))
+activity2 <- mutate(activity2, weekday = ifelse(day == "Saturday" | day == "Saturday", "Weekends", "Weekdays"))
 ```
 
 The code chunk below calculates the average daily activity pattern and plots it on a line chart for weekdays and weekends.
@@ -173,7 +173,7 @@ The code chunk below calculates the average daily activity pattern and plots it 
 ```r
 pattern2 <- summarise(group_by(activity2, interval, weekday), ave_steps=mean(steps))
 
-ggplot(pattern2) + aes(x=interval, y=ave_steps) + geom_line() + labs(title="Average Daily Activity Pattern", x = "Interval", y = "Ave Steps") + facet_grid(. ~ weekday)
+ggplot(pattern2) + aes(x=interval, y=ave_steps) + geom_line() + labs(title="Average Daily Activity Pattern", x = "Interval", y = "Ave Steps") + facet_grid(weekday ~ .)
 ```
 
 ![](./PA1_template_files/figure-html/unnamed-chunk-12-1.png) 

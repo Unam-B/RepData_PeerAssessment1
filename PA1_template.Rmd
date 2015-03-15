@@ -160,6 +160,6 @@ The code chunk below calculates the average daily activity pattern and plots it 
 
 pattern2 <- summarise(group_by(activity2, interval, weekday), ave_steps=mean(steps))
 
-ggplot(pattern2) + aes(x=interval, y=ave_steps) + geom_line() + labs(title="Average Daily Activity Pattern", x = "Interval", y = "Ave Steps") + facet_grid(. ~ weekday)
+ggplot(pattern2) + aes(x=interval, y=ave_steps) + geom_line() + labs(title="Average Daily Activity Pattern", x = "Interval", y = "Ave Steps") + facet_grid(weekday ~ .)
 
 ```
